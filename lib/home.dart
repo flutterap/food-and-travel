@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_and_travel_app/widgets/bottomnavigationbar.dart';
-import 'package:food_and_travel_app/widgets/countrycodepicker.dart';
+
 
 import 'cards/cards1.dart';
 import 'cards/cards2.dart';
@@ -131,7 +131,7 @@ class _homeState extends State<home> {
                                                 fontWeight: FontWeight.w600),
                                           ),
                                           SizedBox(height: 54.h),
-                                          // CountryCodePickerWidget(),
+                                          
                                           SizedBox(height: 29.h),
                                           Container(
                                             height: 46.h,
@@ -184,23 +184,35 @@ class _homeState extends State<home> {
                                                 begin: Alignment.centerLeft,
                                                 end: Alignment.centerRight,
                                                 colors: [
-                                                  Color(0xffFCE8D5)
+                                                  const Color(0xffFCE8D5)
                                                       .withOpacity(1),
-                                                  Color(0xffFCE8D5)
+                                                  const Color(0xffFCE8D5)
                                                       .withOpacity(0),
                                                   // Color(0xff2753EE)
                                                 ],
                                               ),
                                             ),
-                                            child: Center(
-                                              child: Text(
-                                                'CONTINUE',
-                                                style: TextStyle(
-                                                    fontSize: 16.sp,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: const Color(
-                                                        0xffffffff)),
-                                              ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Image.asset('Assets/google.png',
+                                                    height: 32.h, width: 32.w),
+                                                SizedBox(
+                                                  width: 17.w,
+                                                ),
+                                                Text(
+                                                  'Login with Google',
+                                                  style: TextStyle(
+                                                      fontSize: 18.sp,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: const Color(
+                                                          0xff000000)),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                           SizedBox(
