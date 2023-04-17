@@ -131,7 +131,105 @@ class _homeState extends State<home> {
                                                 fontWeight: FontWeight.w600),
                                           ),
                                           SizedBox(height: 54.h),
-                                          CountryCodePickerWidget(),
+                                          // CountryCodePickerWidget(),
+                                          SizedBox(height: 29.h),
+                                          Container(
+                                            height: 46.h,
+                                            width: 319.w,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(15.r),
+                                              gradient: const LinearGradient(
+                                                begin: Alignment.centerLeft,
+                                                end: Alignment.centerRight,
+                                                colors: [
+                                                  Color(0xFF1848F1),
+                                                  Color(0x533F83EE),
+                                                  // Color(0xff2753EE)
+                                                ],
+                                                stops: [0, 1.0],
+                                              ),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                'CONTINUE',
+                                                style: TextStyle(
+                                                    fontSize: 16.sp,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: const Color(
+                                                        0xffffffff)),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 21.h,
+                                          ),
+                                          Text(
+                                            'OR',
+                                            style: TextStyle(
+                                                fontSize: 18.sp,
+                                                fontWeight: FontWeight.w600,
+                                                color: const Color(0xff000000)),
+                                          ),
+                                          SizedBox(
+                                            height: 29.h,
+                                          ),
+                                          Container(
+                                            height: 46.h,
+                                            width: 319.w,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(15.r),
+                                              gradient: LinearGradient(
+                                                begin: Alignment.centerLeft,
+                                                end: Alignment.centerRight,
+                                                colors: [
+                                                  Color(0xffFCE8D5)
+                                                      .withOpacity(1),
+                                                  Color(0xffFCE8D5)
+                                                      .withOpacity(0),
+                                                  // Color(0xff2753EE)
+                                                ],
+                                              ),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                'CONTINUE',
+                                                style: TextStyle(
+                                                    fontSize: 16.sp,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: const Color(
+                                                        0xffffffff)),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 37.h,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                'By logging in, I understand & agree to Appname ',
+                                                style: TextStyle(
+                                                    fontSize: 10.sp,
+                                                    fontWeight: FontWeight.w700,
+                                                    color: const Color(
+                                                        0xff000000)),
+                                              ),
+                                              Text(
+                                                'Terms & Condition .',
+                                                style: TextStyle(
+                                                    fontSize: 10.sp,
+                                                    fontWeight: FontWeight.w700,
+                                                    color: const Color(
+                                                        0xff1848F1)),
+                                              )
+                                            ],
+                                          )
                                         ],
                                       ),
                                     ),
