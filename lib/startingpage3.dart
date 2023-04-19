@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_and_travel_app/home.dart';
+import 'package:food_and_travel_app/bottomnavigationbar.dart';
 
+// ignore: camel_case_types
 class startingpage3 extends StatelessWidget {
   const startingpage3({super.key});
 
@@ -73,7 +74,7 @@ class startingpage3 extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => home(),
+                              builder: (context) => bottomNAvigationBar(),
                             ),
                           );
                         },

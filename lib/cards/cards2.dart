@@ -33,8 +33,11 @@ class cards2 extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                           color: const Color(0xffffffff)),
                     ),
+                    SizedBox(
+                      width: 100.w,
+                    ),
                     Padding(
-                      padding: EdgeInsets.only(top: 11.h, left: 100.w),
+                      padding: EdgeInsets.only(top: 11.h,),
                       child: Stack(
                         children: [
                           Image.asset(

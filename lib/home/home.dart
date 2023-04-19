@@ -1,20 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_and_travel_app/widgets/bottomnavigationbar.dart';
-
-
-import 'cards/cards1.dart';
-import 'cards/cards2.dart';
+import 'package:food_and_travel_app/widgets/countrycode.dart';
+import 'package:food_and_travel_app/home/showModalBottomSheet1.dart';
+import 'package:location/location.dart';
+import '../cards/cards1.dart';
+import '../cards/cards2.dart';
+import 'location/location.dart';
 
 // ignore: camel_case_types
 class home extends StatefulWidget {
-  home({super.key});
+  const home({super.key});
 
   @override
   State<home> createState() => _homeState();
 }
 
+// ignore: camel_case_types
 class _homeState extends State<home> {
+bool isLocationOn = false;
+
+
+// ignore: unused_element
+void _handleLocationOn() {
+  // Handle location turned on
+  setState(() {
+    isLocationOn = true;
+  });
+}
+
   final kGradientBoxDecoration = BoxDecoration(
     gradient: const LinearGradient(
       begin: Alignment.topCenter,
@@ -33,7 +46,6 @@ class _homeState extends State<home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // bottomNavigationBar: CustomNavigationBar(pages: [],),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -44,16 +56,222 @@ class _homeState extends State<home> {
         actions: [
           Row(
             children: [
-              Text(
-                'Bangkok',
-                style: TextStyle(
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.w500,
-                    color: const Color(0xff000000)),
-              ),
-              const Icon(
-                Icons.arrow_drop_down,
-                color: Color(0xff000000),
+              InkWell(
+                onTap: () {
+                  if (isLocationOn) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => location()),
+                    );
+                  } else {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          backgroundColor:
+                              const Color(0xffffffff).withOpacity(0),
+                          insetPadding: const EdgeInsets.all(0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          actions: <Widget>[
+                            SizedBox(
+                              width: 337.w,
+                              height: 314.h,
+                              child: Stack(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 36.h),
+                                    child: Container(
+                                      width: 337.w,
+                                      height: 278.h,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(25.r),
+                                          color: const Color(0xffFFFAF5),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              offset: const Offset(10, 43),
+                                              spreadRadius: 15,
+                                              blurRadius: 19,
+                                              color: const Color(0xff000000)
+                                                  .withOpacity(0.25),
+                                            )
+                                          ]),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(top: 68.h),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Device location not enabled',
+                                              style: TextStyle(
+                                                  fontSize: 18.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  color:
+                                                      const Color(0xff000000)),
+                                            ),
+                                            SizedBox(
+                                              height: 13.h,
+                                            ),
+                                            Text(
+                                              'Turn on your device location for better\n experience',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontSize: 13.sp,
+                                                  fontWeight: FontWeight.w400,
+                                                  color:
+                                                      const Color(0xff000000)),
+                                            ),
+                                            SizedBox(
+                                              height: 21.h,
+                                            ),
+                                            Container(
+                                              width: 209.w,
+                                              height: 39.h,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(12.r),
+                                                gradient: LinearGradient(
+                                                  begin: Alignment.topLeft,
+                                                  end: Alignment.bottomRight,
+                                                  colors: [
+                                                    const Color(0xFF1848F1),
+                                                    const Color(0xFF1848F1)
+                                                        .withOpacity(0.60),
+                                                  ],
+                                                ),
+                                              ),
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsets.only(left: 16.w),
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Image.asset(
+                                                      'Assets/whitelocation.png',
+                                                      width: 24.w,
+                                                      height: 24.h,
+                                                    ),
+                                                    Text(
+                                                      'Use my current location',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          fontSize: 14.sp,
+                                                          color: const Color(
+                                                              0xffffffff)),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            Container(
+                                              width: 209.w,
+                                              height: 39.h,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12.r),
+                                                  border: Border.all(
+                                                    color:
+                                                        const Color(0xff1848F1),
+                                                    width: 1.w,
+                                                  )),
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsets.only(left: 16.w),
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    const Icon(Icons.search,
+                                                        color:
+                                                            Color(0xff000000)),
+                                                    SizedBox(
+                                                      width: 6.w,
+                                                    ),
+                                                    Text(
+                                                      'Enter location manually',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          fontSize: 14.sp,
+                                                          color: const Color(
+                                                              0xff000000)),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 0.h, left: 124.w),
+                                    child: Container(
+                                      height: 100.h,
+                                      width: 100.w,
+                                      decoration: BoxDecoration(
+                                          boxShadow: [
+                                            BoxShadow(
+                                              offset: const Offset(0, 4),
+                                              spreadRadius: 0,
+                                              blurRadius: 4,
+                                              color: const Color(0xff000000)
+                                                  .withOpacity(0.25),
+                                            )
+                                          ],
+                                          color: const Color(0xffffffff),
+                                          shape: BoxShape.circle),
+                                      child: Center(
+                                          child: Image.asset(
+                                        'Assets/location-off.png',
+                                        height: 34.h,
+                                        width: 34.h,
+                                      )),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                },
+
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const location(),
+                //   ),
+                // );
+
+                child: Row(
+                  children: [
+                    Text(
+                      'Bangkok',
+                      style: TextStyle(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xff000000)),
+                    ),
+                    const Icon(
+                      Icons.arrow_drop_down,
+                      color: Color(0xff000000),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 width: 147.w,
@@ -131,33 +349,63 @@ class _homeState extends State<home> {
                                                 fontWeight: FontWeight.w600),
                                           ),
                                           SizedBox(height: 54.h),
-                                          
+                                          CountryCodeSelector(),
                                           SizedBox(height: 29.h),
-                                          Container(
-                                            height: 46.h,
-                                            width: 319.w,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15.r),
-                                              gradient: const LinearGradient(
-                                                begin: Alignment.centerLeft,
-                                                end: Alignment.centerRight,
-                                                colors: [
-                                                  Color(0xFF1848F1),
-                                                  Color(0x533F83EE),
-                                                  // Color(0xff2753EE)
-                                                ],
-                                                stops: [0, 1.0],
+                                          InkWell(
+                                            onTap: () {
+                                              showModalBottomSheet(
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(10.r),
+                                                    topRight:
+                                                        Radius.circular(10.r),
+                                                  ),
+                                                ),
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) {
+                                                  const RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(10),
+                                                      topRight:
+                                                          Radius.circular(10),
+                                                    ),
+                                                  );
+                                                  return const showModalBottomSheet1();
+                                                },
+                                              );
+                                            },
+                                            child: Container(
+                                              height: 46.h,
+                                              width: 319.w,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(15.r),
+                                                gradient: const LinearGradient(
+                                                  begin: Alignment.centerLeft,
+                                                  end: Alignment.centerRight,
+                                                  colors: [
+                                                    Color(0xFF1848F1),
+                                                    Color(0x533F83EE),
+                                                    // Color(0xff2753EE)
+                                                  ],
+                                                  stops: [0, 1.0],
+                                                ),
                                               ),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'CONTINUE',
-                                                style: TextStyle(
-                                                    fontSize: 16.sp,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: const Color(
-                                                        0xffffffff)),
+                                              child: Center(
+                                                child: Text(
+                                                  'CONTINUE',
+                                                  style: TextStyle(
+                                                      fontSize: 16.sp,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: const Color(
+                                                          0xffffffff)),
+                                                ),
                                               ),
                                             ),
                                           ),
